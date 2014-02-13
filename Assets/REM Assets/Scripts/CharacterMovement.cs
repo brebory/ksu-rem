@@ -38,8 +38,8 @@ public class CharacterMovement : MonoBehaviour {
 			if (playerPlane.Raycast(ray, out hitdist)) {
 				Vector3 targetPoint = ray.GetPoint(hitdist);
 				destinationPosition = ray.GetPoint(hitdist);
-				Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-				myTransform.rotation = targetRotation;
+				//Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+				//myTransform.rotation = targetRotation;
 			}
 		}
 		
@@ -53,8 +53,8 @@ public class CharacterMovement : MonoBehaviour {
 			if (playerPlane.Raycast(ray, out hitdist)) {
 				Vector3 targetPoint = ray.GetPoint(hitdist);
 				destinationPosition = ray.GetPoint(hitdist);
-				Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-				myTransform.rotation = targetRotation;
+				//Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+				//myTransform.rotation = targetRotation;
 			}
 			//	myTransform.position = Vector3.MoveTowards(myTransform.position, destinationPosition, moveSpeed * Time.deltaTime);
 		}
