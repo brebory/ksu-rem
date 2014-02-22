@@ -45,7 +45,16 @@ public class weaponScript : MonoBehaviour
 				return;
 		}
 	}
-	
+
+
+	/// <summary>
+	/// Fires the given spell
+	/// </summary>
+	/// <param name="spell">The type of spell to fire</param>
+	/// 
+	/// <todo>
+	/// Figure out why spell prefabs are being cloned, and why one stays at the origin
+	/// </todo>
 	public void FireWeapon(IAttackSpell spell)
 	{
 		// Dummy animation
@@ -54,9 +63,6 @@ public class weaponScript : MonoBehaviour
 			GameObject projectile;
 			// Create velocity vector to spell position
 			Vector3 muzzlevelocity = spell.GetPosition() - transform.position;
-
-			Debug.Log(muzzlevelocity);
-			Debug.DrawLine(transform.position, spell.GetPosition(), Color.red, 5.0f, false);
 			
 			if (Inaccuracy != 0)
 			{
@@ -66,8 +72,8 @@ public class weaponScript : MonoBehaviour
 			
 			muzzlevelocity = muzzlevelocity.normalized * projMuzzleVelocity;
 
-			// Needs to change to get prefab from AttackSpell object
-			projectile = Instantiate(projPrefab, transform.position, transform.rotation) as GameObject;
+			// TODO: Change to get prefab from IAttackSpell object.
+			projectile = Instantiate(spell.GetPrefab(), transform.position, transform.rotation) as GameObject;
 			projectile.GetComponent<projectileScript>().muzzleVelocity = muzzlevelocity;
 			fireTimer = Time.time + RateOfFire;
 		}

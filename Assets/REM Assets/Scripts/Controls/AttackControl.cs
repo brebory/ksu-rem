@@ -4,14 +4,14 @@ using System.Collections;
 public class AttackControl : MonoBehaviour {
 
 	private GameObject player;
-	private GameObject ground;
 
 	// Use this for initialization
 	void Start () {
 
 		// Cache and store player object
 		player = (GameObject)GameObject.FindGameObjectWithTag("Player");
-		ground = (GameObject)GameObject.FindGameObjectWithTag("Ground");
+
+		// Register event listeners
 		Messenger.AddListener("InputAttackEvent1", OnInputAttackEvent1);
 		Messenger.AddListener("InputAttackEvent2", OnInputAttackEvent2);
 		Messenger.AddListener("InputAttackEvent3", OnInputAttackEvent3);
@@ -24,6 +24,10 @@ public class AttackControl : MonoBehaviour {
 		
 	}
 
+	/// <summary>
+	/// Gets the current cursor's scene position using Camera.ScreenPointToRay and Physics.Raycast
+	/// </summary>
+	/// <returns>The scene position.</returns>
 	public Vector3 GetScenePosition() {
 		// Return a new transform at the point of the mouse click, on the same level as the player
 		Vector3 result;

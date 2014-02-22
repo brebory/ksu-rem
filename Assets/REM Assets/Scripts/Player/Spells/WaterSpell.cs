@@ -3,7 +3,6 @@ using System.Collections;
 
 public class WaterSpell : IAttackSpell {
 
-	private string name = "Water Spell";
 	private Vector3 _position;
 
 	public WaterSpell(Vector3 position) {
@@ -14,7 +13,15 @@ public class WaterSpell : IAttackSpell {
 		return _position;
 	}
 
-	public string GetSpellName() {
-		return name;
+	/// <summary>
+	/// Factory method to create a WaterSpell prefab.
+	/// </summary>
+	/// <returns>The prefab.</returns>
+	public GameObject GetPrefab() {
+		GameObject prefab = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		prefab.AddComponent<SphereCollider>();
+		prefab.AddComponent<projectileScript>();
+		prefab.renderer.material.color = Color.blue;
+		return prefab;
 	}
 }
