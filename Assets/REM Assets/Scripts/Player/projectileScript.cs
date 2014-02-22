@@ -33,7 +33,6 @@ public class projectileScript : MonoBehaviour
 		else
 			transform.position += muzzleVelocity * Time.deltaTime;
 		transform.LookAt(transform.position + muzzleVelocity.normalized);
-		Debug.DrawLine(transform.position, transform.position + muzzleVelocity.normalized, Color.red);
 	}
 	
 	void projectileTimeout()
