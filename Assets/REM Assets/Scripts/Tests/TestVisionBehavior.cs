@@ -3,7 +3,8 @@ using System.Collections;
 
 public class TestVisionBehavior : EnemyVisionBehavior {
 
-	private double visionRadius = 1.0f;
+	public double visionRadius = 10.0f;
+	public double angleOfView = 120.0f;
 	private GameObject player;
 	private Color defaultColor;
 	// Use this for initialization
@@ -19,9 +20,15 @@ public class TestVisionBehavior : EnemyVisionBehavior {
 		} else {
 			gameObject.renderer.material.color = defaultColor;
 		}
+		Debug.Log(GetVisibleObjects());
+		Debug.Log(GetVisibleObjects().Count);
 	}
 
-	private double getVisionRadius() {
+	public override double GetVisionRadius() {
 		return visionRadius;
+	}
+
+	public override double GetAngleOfView() {
+		return angleOfView;
 	}
 }
